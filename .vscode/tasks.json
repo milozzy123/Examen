@@ -24,7 +24,7 @@
 		},
 		{
 			"type": "cppbuild",
-			"label": "C/C++: aarch64-linux-gnu-gcc build active file",
+			"label": "C/C++: milo",
 			"command": "/usr/bin/aarch64-linux-gnu-gcc",
 			"args": [
 				"-o",
@@ -33,12 +33,7 @@
 				"-lpaho-mqtt3c",
 				"-I/usr/local/include",
 				"-L/usr/local/lib",
-				"-1pthread",
-				"-fdiagnostics-color=always",
-				"-g",
-				"${file}",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
+				"-pthread"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
