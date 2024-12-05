@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/Examen.dir/Examen.c.o -o Examen  -Wl,-rpath,/usr/local/lib /usr/local/lib/libpaho-mqtt3c.so 
