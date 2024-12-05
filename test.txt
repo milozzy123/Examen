@@ -3,39 +3,23 @@
 #include "MQTTClient.h"
 
 // MQTT configuratie
-#define ADDRESS     "tcp://192.168.0.149:1883"
-#define CLIENTID    "RaspberryPiClient"
-#define TOPIC       "Yoepie"
+#define ADDRESS     "tcp://broker.hivemq.com:1883"
+#define CLIENTID    "SingleFunctionMQTTClient"
+#define TOPIC       "test/topic"
 #define QOS         1
-
-// Functie om berichten naar een tekstbestand te schrijven
-void writeMessageToFile(const char *Message, int MessageLength) {
-    FILE *file = fopen("helloworld.txt", "a"); // Open bestand in append-modus
-    if (file == NULL) {
-        printf("Fout bij openen van bestand.\n");
-        return;
-    }
-
-    fprintf(file, "%.*s\n", MessageLength, Message); // Alleen het bericht opslaan
-    fclose(file);
-    printf("Bericht opgeslagen in helloworld.txt\n");
-}
 
 // Callback-functie voor ontvangen berichten
 int messageArrived(void *context, char *topicName, int topicLen, MQTTClient_message *message) {
-    printf("Ontvangen bericht: %.*s\n", message->payloadlen, (char *)message->payload);
-
-    // Schrijf het bericht naar een bestand
-    writeMessageToFile((char *)message->payload, message->payloadlen);
-
-    // Vrijgeven van resources
+    printf("Ontvangen bericht:\n");
+    printf("Topic: %s\n", topicName);
+    printf("Bericht: %.*s\n", message->payloadlen, (char *)message->payload);
     MQTTClient_freeMessage(&message);
     MQTTClient_free(topicName);
     return 1;
 }
 
-// Functie om verbinding te maken met MQTT, berichten te ontvangen en op te slaan
-void receiveAndSaveMQTTMessages() {
+// Functie om verbinding te maken met MQTT, berichten te ontvangen en te printen
+void receiveAndPrintMQTTMessage() {
     MQTTClient client;
     int rc;
 
@@ -65,7 +49,7 @@ void receiveAndSaveMQTTMessages() {
     // Wachten op berichten (oneindige lus)
     printf("Wachten op berichten...\n");
     while (1) {
-        // Berichten worden verwerkt via de callback
+        // Callback verwerkt de berichten
     }
 
     // Afsluiten (niet bereikt in deze implementatie)
@@ -74,6 +58,6 @@ void receiveAndSaveMQTTMessages() {
 }
 
 int main() {
-    receiveAndSaveMQTTMessages();
+    receiveAndPrintMQTTMessage();
     return 0;
 }
