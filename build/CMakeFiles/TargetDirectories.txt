@@ -1,3 +1,0 @@
-/home/milo/examen/build/CMakeFiles/Examen.dir
-/home/milo/examen/build/CMakeFiles/edit_cache.dir
-/home/milo/examen/build/CMakeFiles/rebuild_cache.dir
