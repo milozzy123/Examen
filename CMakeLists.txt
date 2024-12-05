@@ -1,7 +1,0 @@
-cmake_minimum_required(VERSION 3.10)
-project(Examen)
-set(CMAKE_C_STANDARD 99)
-find_library(PAHO_MQTT_LIBRARY paho-mqtt3c)
-include_directories(/usr/local/include)
-add_executable(Examen Examen.c)
-target_link_libraries(Examen ${PAHO_MQTT_LIBRARY})
