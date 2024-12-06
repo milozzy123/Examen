@@ -1,0 +1,14 @@
+Pseudo-code examen
+
+Data inlezen uit de mqtt broker
+Verdeel dit bericht in verschillende variebelen gescheiden door een ;
+Gooi dat bericht in een txt bestand
+Is dit het eerste bericht?
+	JA => Print deze waarden in het eerste formaat
+	NEE => Is het een volgende dag?
+			JA => Bereken het verbruik, de opbrengst en het gasverbruik tegenover de vorige data en 				print in het tweede formaat
+			NEE => Is het de laatste waarde van de dag?
+					JA => Bereken het verbruik, de opbrengst en het gasverbruik tegenover de 						vorige data en print in het tweede formaat
+					NEE => Bereken het verbruik, de opbrengst en het gasverbruik tegenover de 						vorige data
+Als alle waardes gelijk zijn aan 0
+	Print het einde en stop het programma
