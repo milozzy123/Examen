@@ -83,6 +83,7 @@ int IsVolgendeDag(char *datum_tijd)
     {
         print = false;
     }
+    
 }
 
 void Waardes_Berekenen()
@@ -93,13 +94,7 @@ void Waardes_Berekenen()
         vorigeOpbrengst = totaal_dagopbrengst + totaal_nachtopbrengst;
         vorigeVerbruik = totaal_dagverbruik + totaal_nachtverbruik;
     }
-    gasverbruik = vorigeGasverbruik - (totaal_gasverbruik * 11.55);
-    verbruik = vorigeVerbruik - (totaal_dagverbruik + totaal_nachtverbruik);
-    opbrengst = vorigeOpbrengst - (totaal_dagopbrengst + totaal_nachtopbrengst);
     
-    vorigeGasverbruik = totaal_gasverbruik * 11.55;
-    vorigeOpbrengst = totaal_dagopbrengst + totaal_nachtopbrengst;
-    vorigeVerbruik = totaal_dagverbruik + totaal_nachtverbruik;
 }
 // This function is called upon when an incoming message from mqtt is arrived
 int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *message)
@@ -156,8 +151,8 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
             first = false;
             i = 1;
         }
-        Waardes_Berekenen();
         IsVolgendeDag(datum_tijd_stroom);
+        Waardes_Berekenen();
         if (print == true)
         {
             printf("Datum: %s\n", datum_tijd_stroom);
